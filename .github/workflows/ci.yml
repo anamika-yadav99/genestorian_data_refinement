@@ -24,7 +24,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install poetry
           poetry config virtualenvs.create false
-          poetry install --without dev
+          poetry install 
         
       - name: create poetry shell
         run:  poetry shell
