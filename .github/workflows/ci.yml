@@ -50,8 +50,9 @@ jobs:
         with:
           images: genestorian_refinement_pipeline
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v3.1.1
+
         with:
           context: .
           push: true
