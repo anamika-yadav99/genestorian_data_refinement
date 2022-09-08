@@ -27,3 +27,32 @@ jobs:
         run: |
             cd genestorian_module/test 
             python -m unittest
+          
+   # Update docker image when committing to prod branch if tests pass
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: nyadav99
+          password: DummyTesting01
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: genestorian_refinement_pipeline
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: genestorian_refinement_pipeline:latest
