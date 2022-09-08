@@ -57,3 +57,5 @@ jobs:
           context: .
           push: true
           tags: nyadav99/genestorian_refinement_pipeline:latest
+          labels: ${{ steps.meta.outputs.labels }}
+
