@@ -56,4 +56,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: genestorian_refinement_pipeline:latest
+          tags: nyadav99/genestorian_refinement_pipeline:latest
